@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
+import { SubSink } from 'src/app/shared/utils/subsink.util';
 import { Recipe } from '../models/recipe.model';
 import { RecipeService } from '../recipe-list/services/recipe.service';
 
@@ -8,14 +10,34 @@ import { RecipeService } from '../recipe-list/services/recipe.service';
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.css']
 })
-export class RecipeDetailComponent {
-  @Input() recipe?: Recipe;
+export class RecipeDetailComponent implements OnInit, OnDestroy {
+  recipe?: Recipe;
+  id?: number;
+
+  private subs = new SubSink();
 
   constructor(
     private readonly recipeService: RecipeService,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router,
   ) { }
+
+  ngOnInit(): void {
+    this.subs.sink = this.activatedRoute.params.subscribe((params) => {
+      this.id = +params['id'];
+      this.recipe = this.recipeService.getRecipe(this.id!);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 
   onAddToShoppingList(): void {
     this.recipeService.addIngredientsToShoppingList(this.recipe!.ingredients);
+  }
+
+  onEditRecipe(): void {
+    this.router.navigate(['edit'], { relativeTo: this.activatedRoute });
   }
 }
