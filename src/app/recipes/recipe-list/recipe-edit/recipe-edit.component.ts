@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { SubSink } from 'src/app/shared/utils/subsink.util';
@@ -9,7 +9,7 @@ import { SubSink } from 'src/app/shared/utils/subsink.util';
   styleUrls: ['./recipe-edit.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RecipeEditComponent implements OnInit {
+export class RecipeEditComponent implements OnInit, OnDestroy {
   id?: number;
   editMode = false;
 
@@ -24,5 +24,9 @@ export class RecipeEditComponent implements OnInit {
       this.id = +params['id'];
       this.editMode = !!params['id'];
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

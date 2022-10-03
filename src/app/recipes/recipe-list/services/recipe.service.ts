@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { IngredientModel } from "src/app/shared/models/ingredient.model";
@@ -8,7 +8,6 @@ import { Recipe } from "../../models/recipe.model";
 
 @Injectable()
 export class RecipeService {
-  private recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
     new Recipe({
       name: 'Tasty Schnitzel',
@@ -52,14 +51,6 @@ export class RecipeService {
 
   getRecipes(): Recipe[] {
     return this.recipes.slice();
-  }
-
-  getSelectedRecipe(): Observable<Recipe> {
-    return this.recipeSelected;
-  }
-
-  setSelectedRecipe(recipe: Recipe): void {
-    this.recipeSelected.emit(recipe);
   }
 
   addIngredientsToShoppingList(ingredients: IngredientModel[]): void {

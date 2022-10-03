@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { IngredientModel } from '../shared/models/ingredient.model';
+import { SubSink } from '../shared/utils/subsink.util';
 import { ShoppingListService } from './services/shopping-list.service';
 
 @Component({
@@ -8,8 +9,10 @@ import { ShoppingListService } from './services/shopping-list.service';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit {
+export class ShoppingListComponent implements OnInit, OnDestroy {
   ingredients: IngredientModel[] = [];
+
+  private subs = new SubSink();
 
   constructor(
     private readonly shoppingListService: ShoppingListService,
@@ -17,8 +20,12 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit(): void {
     this.ingredients = this.shoppingListService.getIngredients();
-    this.shoppingListService.ingredientsChanged.subscribe(
+    this.subs.sink = this.shoppingListService.ingredientsChanged.subscribe(
       (ingredients) => this.ingredients = ingredients
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

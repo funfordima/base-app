@@ -9,9 +9,4 @@ import { RecipeService } from './recipe-list/services/recipe.service';
   providers: [RecipeService],
 })
 export class RecipesComponent {
-  selectedRecipe$ = this.recipeService.getSelectedRecipe();
-
-  constructor(
-    private readonly recipeService: RecipeService,
-  ) { }
 }
