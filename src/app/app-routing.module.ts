@@ -6,6 +6,7 @@ import { RecipeEditComponent } from "./recipes/recipe-list/recipe-edit/recipe-ed
 import { RecipeEmptyComponent } from "./recipes/recipe-list/recipe-empty/recipe-empty.component";
 import { RecipesComponent } from "./recipes/recipes.component";
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
+import { FormComponent } from "./form/form.component";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'form', component: FormComponent },
 ];
 
 @NgModule({

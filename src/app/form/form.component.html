@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form #signUpForm="ngForm" (ngSubmit)="onSubmit()">
+        <div id="user-data" #userData="ngModelGroup" ngModelGroup="userData">
+          <div class="form-group">
+            <label for="userName">Username</label>
+            <input type="text" id="userName" class="form-control" ngModel name="userName" required>
+          </div>
+          <button class="btn btn-default" type="button" (click)="suggestUserName()">Suggest an Username</button>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input type="email" id="email" class="form-control" ngModel #email="ngModel" name="email" required email>
+            <span *ngIf="!email.valid && email.touched" class="help-block">Please enter a valid email!</span>
+          </div>
+        </div>
+        <p *ngIf="!userData.valid && userData.touched" class="help-block">UserData is invalid!</p>
+        <div class="form-group">
+          <label for="secret">Secret Questions</label>
+          <select id="secret" class="form-control" [ngModel]="defaultQuestion" name="secret">
+            <option value="pet">Your first Pet?</option>
+            <option value="teacher">Your first teacher?</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" name="questionAnswer" rows="3" [(ngModel)]="answer"></textarea>
+        </div>
+        <p>Your reply: {{ answer }}</p>
+        <div *ngFor="let gender of genders" class="radio">
+          <label>
+            <input type="radio" name="gender" ngModel [value]="gender" required>
+            {{ gender }}
+          </label>
+        </div>
+        <button class="btn btn-primary" type="submit"
+          [disabled]="!signUpForm.valid || signUpForm.pristine">Submit</button>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div *ngIf="isSubmitted" class="row">
+    <div class="col-xs-12">
+      <h3>Your data:</h3>
+      <p>User name: {{ user.name }}</p>
+      <p>User e-mail: {{ user.email }}</p>
+      <p>Secret question: {{ user.secret }}</p>
+      <p>Answer: {{ user.answer }}</p>
+      <p>Gender: {{ user.gender }}</p>
+    </div>
+  </div>
+</div>
