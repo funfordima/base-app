@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 import { IngredientModel } from "src/app/shared/models/ingredient.model";
 import { ShoppingListService } from "src/app/shopping-list/services/shopping-list.service";
@@ -40,10 +40,15 @@ export class RecipeService {
       ],
     }),
   ];
+  recipeList$?: Observable<Recipe[]>;
+
+  private recipeChanged = new Subject<Recipe[]>();
 
   constructor(
     private readonly shoppingListService: ShoppingListService,
-  ) { }
+  ) {
+    this.recipeList$ = this.recipeChanged.asObservable();
+  }
 
   getRecipe(index: number): Recipe {
     return this.recipes[index];
@@ -55,5 +60,20 @@ export class RecipeService {
 
   addIngredientsToShoppingList(ingredients: IngredientModel[]): void {
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe): void {
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe): void {
+    this.recipes[index] = newRecipe;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number): void {
+    this.recipes.splice(index, 1);
+    this.recipeChanged.next(this.recipes.slice());
   }
 }

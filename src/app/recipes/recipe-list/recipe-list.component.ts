@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SubSink } from 'src/app/shared/utils/subsink.util';
 
 import { Recipe } from '../models/recipe.model';
 import { RecipeService } from './services/recipe.service';
@@ -9,8 +10,10 @@ import { RecipeService } from './services/recipe.service';
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent implements OnInit {
+export class RecipeListComponent implements OnInit, OnDestroy {
   recipes?: Recipe[];
+
+  private subSink = new SubSink();
 
   constructor(
     private readonly recipeService: RecipeService,
@@ -20,6 +23,11 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.recipes = this.recipeService.getRecipes();
+    this.subSink.sink = this.recipeService.recipeList$!.subscribe((recipes) => this.recipes = recipes);
+  }
+
+  ngOnDestroy(): void {
+    this.subSink.unsubscribe();
   }
 
   onNewRecipe(): void {

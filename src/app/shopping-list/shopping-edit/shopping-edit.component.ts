@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { switchMap, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { IngredientModel } from 'src/app/shared/models/ingredient.model';
 import { SubSink } from 'src/app/shared/utils/subsink.util';
