@@ -1,0 +1,70 @@
+.message {
+  overflow: initial;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 0 16px;
+  text-align: center;
+
+  // @include not-mobile {
+  //   padding: 0 24px;
+  // }
+
+  &__icon {
+    margin-top: 97px;
+    margin-bottom: 42px;
+
+    // @include not-mobile() {
+    //   margin-top: 66px;
+    //   margin-bottom: 34px;
+    // }
+  }
+
+  &__title {
+    // @extend %t-h4;
+    margin-bottom: 24px;
+
+    // @include not-mobile() {
+    //   margin-bottom: 16px;
+    // }
+  }
+
+  &__description {
+    // @extend %t-body1;
+    margin: 0;
+    padding: 0;
+
+    // @include not-mobile() {
+    //   margin-bottom: 48px;
+    // }
+  }
+
+  &__divider {
+    align-self: stretch;
+    // border-top: 1px solid app-color('M300');
+    margin: 0 -24px;
+  }
+
+  &__actions {
+    margin: auto 0 0 0;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 0;
+
+    // @include not-mobile() {
+    //   justify-content: flex-end;
+    //   align-items: center;
+    // }
+  }
+
+  &__button {
+    width: 100%;
+
+    // @include not-mobile() {
+    //   width: auto;
+    //   height: 100%;
+    // }
+  }
+}

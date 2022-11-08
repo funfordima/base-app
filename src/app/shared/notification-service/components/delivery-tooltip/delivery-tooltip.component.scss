@@ -1,0 +1,63 @@
+@import 'common';
+
+.delivery-tooltip {
+  &-header {
+    padding: rem(16);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: rem(12) rem(12) 0 0;
+
+    @include not-mobile {
+      padding: rem(12) rem(24);
+      border-radius: 0;
+      box-shadow: unset;
+    }
+
+    &__title {
+      @extend %t-h4;
+    }
+
+    &__subtitle {
+      @extend %t-body2;
+    }
+
+    &__close-icon {
+      margin-left: auto;
+    }
+
+    &__close-button {
+      @extend %t-body1-bold;
+      color: app-color('P700');
+      outline: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-description {
+    @extend %t-body1;
+    padding: rem(8) rem(8) rem(16) rem(16);
+    padding-bottom: rem(16);
+
+    @include not-mobile {
+      padding: rem(24);
+      padding-bottom: rem(8);
+      border-top: rem(1) solid app-color('M300');
+    }
+  }
+
+  &-table {
+    display: block;
+    padding: 0 rem(16) rem(4);
+
+    @include not-mobile() {
+      padding: 0 rem(24);
+    }
+  }
+}

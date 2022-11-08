@@ -1,0 +1,20 @@
+@import 'common';
+
+.delivery-tooltip-dialog .mat-dialog-container {
+  height: auto;
+  width: rem(375);
+  align-self: flex-end;
+  padding: 0;
+  padding-bottom: rem(16);
+  overflow: hidden;
+  overflow-y: auto;
+  box-shadow: 0 rem(4) rem(16) rgba(0, 78, 128, 0.16), 0 rem(10) rem(60) rgba(0, 0, 0, 0.16);
+  border-radius: rem(12) rem(12) 0 0;
+
+  @include not-mobile {
+    padding-bottom: rem(6);
+    width: rem(400);
+    align-self: unset;
+    border-radius: rem(4);
+  }
+}

@@ -1,0 +1,24 @@
+<div class="delivery-tooltip-header">
+  <div class="delivery-tooltip-header__container">
+    <h4 class="delivery-tooltip-header__title">
+      {{ 'vehicle-details.vehicle-card.delivery-tooltip-table.tooltip-title' | translate }}
+    </h4>
+    <p class="delivery-tooltip-header__subtitle">
+      {{ 'vehicle-details.vehicle-card.delivery-tooltip-table.tooltip-subtitle' | translate }}
+    </p>
+  </div>
+  <button
+    *vcMobileOnly
+    mat-dialog-close
+    color="primary"
+    class="delivery-tooltip-header__close-button"
+  >
+    {{ 'vehicle-details.vehicle-card.delivery-tooltip-table.button-close' | translate }}
+  </button>
+  <vc-dialog-close-button *vcNotMobile mat-dialog-close class="delivery-tooltip-header__close-icon">
+  </vc-dialog-close-button>
+</div>
+<h5 class="delivery-tooltip-description">
+  {{ 'vehicle-details.vehicle-card.delivery-tooltip-table.tooltip-description' | translate }}
+</h5>
+<vc-tooltip-table class="delivery-tooltip-table"></vc-tooltip-table>

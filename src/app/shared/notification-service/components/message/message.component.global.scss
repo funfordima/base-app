@@ -1,0 +1,21 @@
+.message-dialog__panel {
+  height: 100%;
+  width: 100%;
+
+  @include not-mobile {
+    width: auto;
+    height: auto;
+  }
+
+  .mat-dialog-container {
+    width: 100%;
+    height: 100%;
+    overflow: initial;
+    padding: 0;
+
+    @include not-mobile {
+      width: 400px;
+      height: auto;
+    }
+  }
+}

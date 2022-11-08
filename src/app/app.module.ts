@@ -17,6 +17,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeEmptyComponent } from './recipes/recipe-list/recipe-empty/recipe-empty.component';
 import { RecipeEditComponent } from './recipes/recipe-list/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipes/recipe-list/services/recipe.service';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotificationModule } from './shared/notification-service';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,8 @@ import { RecipeService } from './recipes/recipe-list/services/recipe.service';
     DropDownDirective,
     RecipeEmptyComponent,
     RecipeEditComponent,
+    AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +44,8 @@ import { RecipeService } from './recipes/recipe-list/services/recipe.service';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    NotificationModule,
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]

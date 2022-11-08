@@ -1,0 +1,58 @@
+@import 'common';
+
+.success-dialog {
+  &__header {
+    display: flex;
+    align-items: center;
+    margin: 0 rem(-16) rem(16);
+    padding: 0 rem(16) rem(16);
+    border-bottom: 1px solid app-color('M300');
+    color: app-color('M900');
+
+    @include not-mobile {
+      margin: 0 rem(-24) rem(24);
+      padding: 0 rem(24) rem(24);
+    }
+  }
+
+  &__close-icon {
+    margin-left: auto;
+  }
+
+  &__icon {
+    @include mat-icon-size(rem(104));
+
+    margin: rem(42) auto;
+    fill: app-color('P700');
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    @extend %t-h4;
+
+    margin-bottom: rem(24);
+    text-align: center;
+    color: app-color('M900');
+  }
+
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 rem(-16);
+    padding: 0 rem(16);
+
+    @include not-mobile {
+      margin: 0 rem(-24);
+      padding: 0 rem(24);
+    }
+  }
+
+  &__close-button {
+    justify-content: unset;
+    width: 100%;
+  }
+}

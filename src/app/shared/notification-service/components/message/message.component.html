@@ -1,0 +1,15 @@
+<div class="message">
+  <img class="message__icon" [attr.src]="data.iconUrl" [attr.alt]="data.title" />
+  <h1 mat-dialog-title class="message__title">
+    {{ data.title }}
+  </h1>
+  <div mat-dialog-content class="message__description">
+    <p>{{ data.subtitle }}</p>
+  </div>
+  <div *vcNotMobile class="message__divider"></div>
+  <div mat-dialog-actions class="message__actions">
+    <button mat-raised-button color="primary" class="message__button" (click)="onClick()">
+      {{ data.button }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="success-dialog">
+  <div *ngIf="data.displayHeader" class="success-dialog__header">
+    <vc-dialog-close-button
+      mat-dialog-close
+      class="success-dialog__close-icon"
+    ></vc-dialog-close-button>
+  </div>
+  <mat-dialog-content class="success-dialog__content">
+    <mat-icon aria-hidden="false" [svgIcon]="data.iconSrc!" class="success-dialog__icon">
+    </mat-icon>
+    <h2 class="success-dialog__title">
+      {{ data.message! | translate }}
+    </h2>
+    <div
+      *ngIf="data.description"
+      class="success-dialog__description"
+      [innerHtml]="data.description | translate"
+    ></div>
+    <div *ngIf="data.dynamicComponent" class="success-dialog__dynamic-component">
+      <ng-container *ngComponentOutlet="$any(data.dynamicComponent)"></ng-container>
+    </div>
+    <div class="success-dialog__action">
+      <button mat-dialog-close mat-flat-button color="primary" class="success-dialog__close-button">
+        {{ data.successButtonTitle! | translate }}
+      </button>
+    </div>
+  </mat-dialog-content>
+</div>

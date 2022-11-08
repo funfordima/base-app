@@ -1,0 +1,5 @@
+@import 'common';
+
+.bold-text {
+  @include typography-level-props('body1-bold');
+}
