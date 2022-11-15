@@ -18,4 +18,12 @@ export class AuthApiService {
       returnSecureToken: true,
     });
   }
+
+  login(email: string, password: string): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(environment.api.loginUrl, {
+      email,
+      password,
+      returnSecureToken: true,
+    });
+  }
 }

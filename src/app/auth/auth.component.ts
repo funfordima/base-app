@@ -1,7 +1,11 @@
+import { Route, Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { SubSink } from '../shared/utils/subsink.util';
+import { AuthResponse } from './models/auth-response.interface';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -19,6 +23,7 @@ export class AuthComponent implements OnDestroy {
 
   constructor(
     private readonly authService: AuthService,
+    private readonly router: Router,
     private readonly cdr: ChangeDetectorRef,
   ) { }
 
@@ -35,24 +40,32 @@ export class AuthComponent implements OnDestroy {
       return;
     }
 
+    this.error = null;
+    let authObs$: Observable<AuthResponse | HttpErrorResponse>;
     const { email, password } = form.value;
     this.isLoading = true;
 
     if (this.isLoginMode) {
-      // ...
+      authObs$ = this.authService.login(email, password);
     } else {
-      this.subs.sink = this.authService.signUp(email, password).subscribe(
-        () => {
-          this.isLoading = false;
-          this.cdr.markForCheck();
-        },
-        (err) => {
-          this.error = err?.error?.error ? err.error.error : 'An error occurred';
-          this.isLoading = false;
-
-          this.cdr.markForCheck();
-        });
+      authObs$ = this.authService.signUp(email, password);
     }
+
+    this.subs.sink = authObs$.subscribe(
+      (res) => {
+        console.log(res);
+        this.isLoading = false;
+        this.error = null;
+        this.router.navigate(['/recipes']);
+        this.cdr.markForCheck();
+      },
+      (err) => {
+        console.log(err);
+        this.error = err?.error?.error ? err.error.error : 'An error occurred';
+        this.isLoading = false;
+
+        this.cdr.markForCheck();
+      });
 
     form.reset();
   }

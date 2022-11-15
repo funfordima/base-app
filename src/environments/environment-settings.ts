@@ -3,5 +3,6 @@ export interface EnvironmentSettings {
   api: {
     fireBaseUrl: string;
     authUrl: string;
+    loginUrl: string;
   };
 }
