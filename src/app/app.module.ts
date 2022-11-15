@@ -22,6 +22,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationModule } from './shared/notification-service';
 import { AuthInterceptorService } from './auth/interceptors/auth-interceptor.service';
+import { ErrorInterceptorService } from './core/interceptors/error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,11 @@ import { AuthInterceptorService } from './auth/interceptors/auth-interceptor.ser
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
       multi: true,
     },
   ],
