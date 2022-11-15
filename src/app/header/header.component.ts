@@ -38,4 +38,8 @@ export class HeaderComponent implements OnDestroy {
   onFetchData(): void {
     this.subSink.sink = this.recipeService.fetchRecipes().subscribe();
   }
+
+  onLogout(): void {
+    this.authService.logout();
+  }
 }

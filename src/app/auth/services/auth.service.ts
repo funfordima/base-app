@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { NotificationService } from 'src/app/shared/notification-service';
@@ -20,6 +21,7 @@ export class AuthService {
   constructor(
     private readonly authApiService: AuthApiService,
     private readonly notificationService: NotificationService,
+    private readonly router: Router,
   ) {
     this.user$ = this.userSubject.asObservable();
   }
@@ -50,6 +52,11 @@ export class AuthService {
       )),
       catchError(this.handleError),
     );
+  }
+
+  logout(): void {
+    this.userSubject.next(null);
+    this.router.navigate(['/auth']);
   }
 
   private handleAuthentication(email: string, userId: string, token: string, expiresIn: string): void {
