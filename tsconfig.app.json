@@ -4,7 +4,12 @@
   "strict": false,
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "files": [
     "src/main.ts",
