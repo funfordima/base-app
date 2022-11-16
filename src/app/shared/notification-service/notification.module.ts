@@ -7,10 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 
 import { MessageComponent } from './components/message/message.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
     MessageComponent,
+    AlertComponent,
   ],
   imports: [
     CommonModule,
@@ -20,5 +22,6 @@ import { MessageComponent } from './components/message/message.component';
     RouterModule,
     A11yModule,
   ],
+  exports: [AlertComponent],
 })
 export class NotificationModule { }

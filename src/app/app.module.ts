@@ -23,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationModule } from './shared/notification-service';
 import { AuthInterceptorService } from './auth/interceptors/auth-interceptor.service';
 import { ErrorInterceptorService } from './core/interceptors/error-interceptor.service';
+import { PlaceholderDirective } from './shared/utils/placeholder.directive';
+import { AlertComponent } from './shared/notification-service/components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { ErrorInterceptorService } from './core/interceptors/error-interceptor.s
     RecipeEditComponent,
     AuthComponent,
     LoadingSpinnerComponent,
+    PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,8 @@ import { ErrorInterceptorService } from './core/interceptors/error-interceptor.s
       multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // FIXME: old version
+  // entryComponents: [AlertComponent],
 })
 export class AppModule { }

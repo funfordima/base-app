@@ -9,6 +9,8 @@
       <p>{{ error }}</p>
     </div>
 
+    <!-- <app-alert *ngIf="error" [message]="error" (close)="onClose()"></app-alert> -->
+
     <form *ngIf="!isLoading" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
       <div class="form-group">
         <label for="email">E-mail:</label>
@@ -30,3 +32,5 @@
     </form>
   </div>
 </div>
+
+<ng-template appPlaceholder></ng-template>
