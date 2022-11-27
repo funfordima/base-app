@@ -14,9 +14,6 @@ import { AuthInterceptorService } from './auth/interceptors/auth-interceptor.ser
 import { ErrorInterceptorService } from './core/interceptors/error-interceptor.service';
 import { PlaceholderDirective } from './shared/utils/placeholder.directive';
 import { AlertComponent } from './shared/notification-service/components/alert/alert.component';
-import { RecipesModule } from './recipes/recipes.module';
-import { ShoppingListModule } from './shopping-list/shopping-list.module';
-import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -31,9 +28,6 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     BrowserAnimationsModule,
     NotificationModule,
-    RecipesModule,
-    ShoppingListModule,
-    AuthModule,
   ],
   providers: [
     ShoppingListService,

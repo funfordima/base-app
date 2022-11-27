@@ -27,6 +27,4 @@ import { RecipesComponent } from "./recipes.component";
     RecipesRoutingModule,
   ],
 })
-export class RecipesModule {
-
-}
+export class RecipesModule { }
