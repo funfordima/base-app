@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DropDownDirective } from './shared/utils/drop-down.directive';
-import { ShoppingListService } from './shopping-list/services/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeService } from './recipes/recipe-list/services/recipe.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,13 +13,14 @@ import { AuthInterceptorService } from './auth/interceptors/auth-interceptor.ser
 import { ErrorInterceptorService } from './core/interceptors/error-interceptor.service';
 import { PlaceholderDirective } from './shared/utils/placeholder.directive';
 import { AlertComponent } from './shared/notification-service/components/alert/alert.component';
+import { StoreModule } from '@ngrx/store';
+import { SharedModule } from './shared/shared.module';
+import * as fromApp from './store/app.reducer';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    DropDownDirective,
-    PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
@@ -28,9 +28,10 @@ import { AlertComponent } from './shared/notification-service/components/alert/a
     HttpClientModule,
     BrowserAnimationsModule,
     NotificationModule,
+    SharedModule,
+    StoreModule.forRoot(fromApp.appReducer),
   ],
   providers: [
-    ShoppingListService,
     RecipeService,
     {
       provide: HTTP_INTERCEPTORS,
