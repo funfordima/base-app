@@ -7,6 +7,7 @@ import { RecipeService } from '../recipes/recipe-list/services/recipe.service';
 import { DataStorageApiService } from '../shared/services/data-storage-api.service';
 import { SubSink } from '../shared/utils/subsink.util';
 import * as fromApp from '../store/app.reducer';
+import * as AuthActions from '../auth/store/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -47,6 +48,7 @@ export class HeaderComponent implements OnDestroy {
   }
 
   onLogout(): void {
-    this.authService.logout();
+    // this.authService.logout();
+    this.store.dispatch(new AuthActions.Logout());
   }
 }

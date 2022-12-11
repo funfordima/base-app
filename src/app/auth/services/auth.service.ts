@@ -33,106 +33,117 @@ export class AuthService {
     // this.user$ = this.userSubject.asObservable();
   }
 
-  getUserData(): UserModel | null {
-    return this.userSubject.getValue();
+  setLogoutTimer(expirationDuration: number): void {
+    this.tokenExpirationTimer = setTimeout(() => this.store.dispatch(new AuthActions.Logout()), expirationDuration);
   }
 
-  signUp(email: string, password: string): Observable<AuthResponse | HttpErrorResponse> {
-    return this.authApiService.signUp(email, password).pipe(
-      tap((userData) => this.handleAuthentication(
-        userData.email,
-        userData.localId,
-        userData.idToken,
-        userData.expiresIn
-      )),
-      catchError(this.handleError),
-    )
-  }
-
-  login(email: string, password: string): Observable<AuthResponse | HttpErrorResponse> {
-    return this.authApiService.login(email, password).pipe(
-      tap((userData) => this.handleAuthentication(
-        userData.email,
-        userData.localId,
-        userData.idToken,
-        userData.expiresIn
-      )),
-      catchError(this.handleError),
-    );
-  }
-
-  logout(): void {
-    // this.userSubject.next(null);
-    this.store.dispatch(new AuthActions.Logout());
-    this.router.navigate(['/auth']);
-    this.localStorageService.removeItem('userData');
-
+  clearLogoutTimer(): void {
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
-    }
-
-    this.tokenExpirationTimer = undefined;
-  }
-
-  autoLogin(): void {
-    const userData: { email: string, id: string, _token: string, _tokenExpDate: string } | null = this.localStorageService.getJSONItem('userData');
-
-    if (!userData) {
-      return;
-    }
-
-    const loadedUser = new UserModel(
-      userData.email,
-      userData.id,
-      userData._token,
-      new Date(userData._tokenExpDate),
-    );
-    const expirationDuration = new Date(userData._tokenExpDate).getTime() - new Date().getTime();
-
-    if (loadedUser.token) {
-      // this.userSubject.next(loadedUser);
-      this.store.dispatch(new AuthActions.Login({
-        email: loadedUser.email,
-        userId: loadedUser.id,
-        token: loadedUser.token,
-        expirationDate: new Date(userData._tokenExpDate),
-      }));
-      this.autoLogout(expirationDuration);
+      this.tokenExpirationTimer = null;
     }
   }
 
-  autoLogout(expirationDuration: number): void {
-    this.tokenExpirationTimer = setTimeout(() => this.logout(), expirationDuration);
-  }
+  // getUserData(): UserModel | null {
+  //   return this.userSubject.getValue();
+  // }
 
-  private handleAuthentication(email: string, userId: string, token: string, expiresIn: string): void {
-    const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000);
-    const newUser = new UserModel(
-      email,
-      userId,
-      token,
-      expirationDate,
-    );
+  // signUp(email: string, password: string): Observable<AuthResponse | HttpErrorResponse> {
+  //   return this.authApiService.signUp(email, password).pipe(
+  //     tap((userData) => this.handleAuthentication(
+  //       userData.email,
+  //       userData.localId,
+  //       userData.idToken,
+  //       userData.expiresIn
+  //     )),
+  //     catchError(this.handleError),
+  //   )
+  // }
 
-    this.localStorageService.setJSONItem('userData', newUser);
-    // this.userSubject.next(newUser);
-    this.store.dispatch(new AuthActions.Login({
-      email,
-      userId,
-      token,
-      expirationDate,
-    }));
-    this.autoLogout(+expiresIn * 1000);
-  }
+  // login(email: string, password: string): Observable<AuthResponse | HttpErrorResponse> {
+  //   return this.authApiService.login(email, password).pipe(
+  //     tap((userData) => this.handleAuthentication(
+  //       userData.email,
+  //       userData.localId,
+  //       userData.idToken,
+  //       userData.expiresIn
+  //     )),
+  //     catchError(this.handleError),
+  //   );
+  // }
 
-  private handleError(err: HttpErrorResponse): Observable<HttpErrorResponse> {
-    console.log(err);
+  // logout(): void {
+  //   // this.userSubject.next(null);
+  //   this.store.dispatch(new AuthActions.Logout());
+  //   // this.router.navigate(['/auth']);
+  //   this.localStorageService.removeItem('userData');
 
-    const error = getCustomServerErrorText(err);
-    if (error) {
-      this.notificationService.showErrorMessage({ errorCode: '404', errorMessage: error?.error?.error?.message });
-    }
+  //   if (this.tokenExpirationTimer) {
+  //     clearTimeout(this.tokenExpirationTimer);
+  //   }
 
-    return throwError(err);
-  }
+  //   this.tokenExpirationTimer = undefined;
+  // }
+
+  // autoLogin(): void {
+  //   const userData: { email: string, id: string, _token: string, _tokenExpDate: string } | null = this.localStorageService.getJSONItem('userData');
+
+  //   if (!userData) {
+  //     return;
+  //   }
+
+  //   const loadedUser = new UserModel(
+  //     userData.email,
+  //     userData.id,
+  //     userData._token,
+  //     new Date(userData._tokenExpDate),
+  //   );
+  //   const expirationDuration = new Date(userData._tokenExpDate).getTime() - new Date().getTime();
+
+  //   if (loadedUser.token) {
+  //     // this.userSubject.next(loadedUser);
+  //     this.store.dispatch(new AuthActions.AuthenticateSuccess({
+  //       email: loadedUser.email,
+  //       userId: loadedUser.id,
+  //       token: loadedUser.token,
+  //       expirationDate: new Date(userData._tokenExpDate),
+  //     }));
+  //     // this.autoLogout(expirationDuration);
+  //   }
+  // }
+
+  // autoLogout(expirationDuration: number): void {
+  //   this.tokenExpirationTimer = setTimeout(() => this.logout(), expirationDuration);
+  // }
+
+  // private handleAuthentication(email: string, userId: string, token: string, expiresIn: string): void {
+  //   const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000);
+  //   const newUser = new UserModel(
+  //     email,
+  //     userId,
+  //     token,
+  //     expirationDate,
+  //   );
+
+  //   this.localStorageService.setJSONItem('userData', newUser);
+  //   // this.userSubject.next(newUser);
+  //   this.store.dispatch(new AuthActions.AuthenticateSuccess({
+  //     email,
+  //     userId,
+  //     token,
+  //     expirationDate,
+  //   }));
+  //   this.autoLogout(+expiresIn * 1000);
+  // }
+
+  // private handleError(err: HttpErrorResponse): Observable<HttpErrorResponse> {
+  //   console.log(err);
+
+  //   const error = getCustomServerErrorText(err);
+  //   if (error) {
+  //     this.notificationService.showErrorMessage({ errorCode: '404', errorMessage: error?.error?.error?.message });
+  //   }
+
+  //   return throwError(err);
+  // }
 }

@@ -17,8 +17,6 @@ export const getErrorMessageOrGenericByCode = (message: AuthErrorCodeEnum): stri
 export const getCustomServerErrorText = (inputError: HttpErrorResponse): HttpErrorResponse => {
   const processedError = { ...inputError };
 
-  console.log(inputError);
-
   processedError.error.error = getErrorMessage(processedError.error?.errors?.[0]?.message) || processedError.error?.errors?.[0].message;
 
   return processedError;
