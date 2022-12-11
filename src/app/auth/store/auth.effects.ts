@@ -1,17 +1,16 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Actions, ofType, Effect } from "@ngrx/effects";
-import { of } from "rxjs";
 import { catchError } from "rxjs/internal/operators/catchError";
-import { switchMap, map, tap } from "rxjs/operators";
-import { LocalStorageService } from "src/app/shared/services/local-storage.service";
-import { UserModel } from "../models/user.model";
-import { AuthApiService } from "../services/auth-api.service";
-import { AuthService } from "../services/auth.service";
+import { map, switchMap, tap } from "rxjs/operators";
 
+import { LocalStorageService } from "../../shared/services/local-storage.service";
+import { UserModel } from "../models/user.model";
+import { AuthService } from "../services/auth.service";
+import { AuthApiService } from "../services/auth-api.service";
 import * as AuthActions from './auth.actions';
 import { handleAuthentication } from "./utils/handle-authentification.util";
 import { handleError } from "./utils/handle-error.util";
+import { Actions, Effect, ofType } from "@ngrx/effects";
 
 @Injectable()
 export class AuthEffects {
@@ -74,7 +73,6 @@ export class AuthEffects {
       const expirationDuration = new Date(userData._tokenExpDate).getTime() - new Date().getTime();
 
       if (loadedUser.token) {
-        // this.userSubject.next(loadedUser);
         this.authService.setLogoutTimer(expirationDuration);
         return new AuthActions.AuthenticateSuccess({
           email: loadedUser.email,
@@ -82,7 +80,6 @@ export class AuthEffects {
           token: loadedUser.token,
           expirationDate: new Date(userData._tokenExpDate),
         });
-        // this.autoLogout(expirationDuration);
       }
 
       return { type: 'DUMMY ' };

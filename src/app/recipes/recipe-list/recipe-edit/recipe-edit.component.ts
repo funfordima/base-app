@@ -1,11 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, Inject } from '@angular/core';
-import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import type { OnDestroy,OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import type { AbstractControl} from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { WINDOW } from 'src/app/core/providers/window-token';
 
-import { SubSink } from 'src/app/shared/utils/subsink.util';
 import { Recipe } from '../../models/recipe.model';
 import { RecipeService } from '../services/recipe.service';
+import { WINDOW } from 'src/app/core/providers/window-token';
+import { SubSink } from 'src/app/shared/utils/subsink.util';
 
 @Component({
   selector: 'app-recipe-edit',

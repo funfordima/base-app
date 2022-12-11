@@ -1,4 +1,4 @@
-import { Action } from "@ngrx/store";
+import type { Action } from "@ngrx/store";
 
 export const LOGIN_START = '[Auth] Login Start';
 export const AUTHENTICATE_FAIL = '[Auth] Login Fail';

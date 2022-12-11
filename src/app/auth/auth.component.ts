@@ -1,17 +1,14 @@
-import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, ComponentFactoryResolver, ViewChild, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
-import { Store } from '@ngrx/store';
+import type { OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
+import type { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
-import { SubSink } from '../shared/utils/subsink.util';
-import { AuthResponse } from './models/auth-response.interface';
-import { AuthService } from './services/auth.service';
 import { AlertComponent } from '../shared/notification-service/components/alert/alert.component';
 import { PlaceholderDirective } from '../shared/utils/placeholder.directive';
-import * as fromApp from '../store/app.reducer';
+import { SubSink } from '../shared/utils/subsink.util';
+import type * as fromApp from '../store/app.reducer';
 import * as AuthActions from './store/auth.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-auth',
@@ -30,8 +27,6 @@ export class AuthComponent implements OnInit, OnDestroy {
   private closeSub = new Subscription();
 
   constructor(
-    private readonly authService: AuthService,
-    private readonly router: Router,
     private readonly store: Store<fromApp.AppState>,
     private readonly componentFactoryResolver: ComponentFactoryResolver,
     private readonly cdr: ChangeDetectorRef,
@@ -67,15 +62,11 @@ export class AuthComponent implements OnInit, OnDestroy {
     }
 
     this.error = null;
-    // let authObs$: Observable<AuthResponse | HttpErrorResponse>;
     const { email, password } = form.value;
-    // this.isLoading = true;
 
     if (this.isLoginMode) {
-      // authObs$ = this.authService.login(email, password);
       this.store.dispatch(new AuthActions.LoginStart({ email, password }));
     } else {
-      // authObs$ = this.authService.signUp(email, password);
       this.store.dispatch(new AuthActions.SignupStart({ email, password }));
     }
 
@@ -83,7 +74,6 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   onClose(): void {
-    // this.error = null;
     this.store.dispatch(new AuthActions.ClearError());
   }
 

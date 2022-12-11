@@ -1,4 +1,5 @@
-import { Observable, of } from "rxjs";
+import type { Observable} from "rxjs";
+import { of } from "rxjs";
 
 import * as AuthActions from '../auth.actions';
 

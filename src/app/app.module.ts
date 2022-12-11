@@ -1,23 +1,20 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { DropDownDirective } from './shared/utils/drop-down.directive';
 import { AppRoutingModule } from './app-routing.module';
-import { RecipeService } from './recipes/recipe-list/services/recipe.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NotificationModule } from './shared/notification-service';
 import { AuthInterceptorService } from './auth/interceptors/auth-interceptor.service';
+import { AuthEffects } from './auth/store/auth.effects';
 import { ErrorInterceptorService } from './core/interceptors/error-interceptor.service';
-import { PlaceholderDirective } from './shared/utils/placeholder.directive';
-import { AlertComponent } from './shared/notification-service/components/alert/alert.component';
-import { StoreModule } from '@ngrx/store';
+import { HeaderComponent } from './header/header.component';
+import { RecipeService } from './recipes/recipe-list/services/recipe.service';
+import { NotificationModule } from './shared/notification-service';
 import { SharedModule } from './shared/shared.module';
 import * as fromApp from './store/app.reducer';
-import { AuthEffects } from './auth/store/auth.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [

@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import type { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { Nullable } from 'src/app/models/nullable.type';
+import type { Nullable } from 'src/app/models/nullable.type';
 import { EnvironmentsNameEnum } from 'src/environments/constants/environments-name.enum';
-import { EnvironmentModel } from 'src/environments/models/environment.model';
+import type { EnvironmentModel } from 'src/environments/models/environment.model';
 
 @Injectable({
   providedIn: 'root',

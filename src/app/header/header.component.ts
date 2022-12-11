@@ -1,13 +1,13 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Store } from '@ngrx/store';
+import type { OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { map, pluck } from 'rxjs/operators';
-import { AuthService } from '../auth/services/auth.service';
-import { RecipeService } from '../recipes/recipe-list/services/recipe.service';
 
+import * as AuthActions from '../auth/store/auth.actions';
+import { RecipeService } from '../recipes/recipe-list/services/recipe.service';
 import { DataStorageApiService } from '../shared/services/data-storage-api.service';
 import { SubSink } from '../shared/utils/subsink.util';
-import * as fromApp from '../store/app.reducer';
-import * as AuthActions from '../auth/store/auth.actions';
+import type * as fromApp from '../store/app.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-header',
@@ -16,9 +16,6 @@ import * as AuthActions from '../auth/store/auth.actions';
 })
 export class HeaderComponent implements OnDestroy {
   collapsed = false;
-  // isAuthenticated$ = this.authService.user$.pipe(
-  //   map((user) => !!user),
-  // );
   isAuthenticated$ = this.store.select('auth').pipe(
     pluck('user'),
     map((user) => !!user),
@@ -29,7 +26,6 @@ export class HeaderComponent implements OnDestroy {
   constructor(
     private readonly dataStorageApiService: DataStorageApiService,
     private readonly recipeService: RecipeService,
-    private readonly authService: AuthService,
     private readonly store: Store<fromApp.AppState>,
   ) { }
 
@@ -48,7 +44,6 @@ export class HeaderComponent implements OnDestroy {
   }
 
   onLogout(): void {
-    // this.authService.logout();
     this.store.dispatch(new AuthActions.Logout());
   }
 }

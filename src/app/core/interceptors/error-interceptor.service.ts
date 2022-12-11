@@ -10,8 +10,8 @@ import type { Observable } from 'rxjs';
 import { EMPTY, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { NotificationService } from 'src/app/shared/notification-service';
 import { HttpErrorsEnum } from '../constants/http-errors.enum';
+import { NotificationService } from 'src/app/shared/notification-service';
 
 
 @Injectable()

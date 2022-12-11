@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import type { OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SubSink } from 'src/app/shared/utils/subsink.util';
 
-import { Recipe } from '../models/recipe.model';
+import type { Recipe } from '../models/recipe.model';
 import { RecipeService } from './services/recipe.service';
+import { SubSink } from 'src/app/shared/utils/subsink.util';
 
 @Component({
   selector: 'app-recipe-list',

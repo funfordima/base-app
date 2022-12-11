@@ -1,4 +1,4 @@
-import { FirebaseServerErrorModel } from "./firebase-server-error.model";
+import type { FirebaseServerErrorModel } from "./firebase-server-error.model";
 
 export class FirebaseApiServerErrorModel {
   constructor(

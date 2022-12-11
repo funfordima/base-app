@@ -13,7 +13,7 @@ const initialState: State = {
   loading: false,
 };
 
-export function AuthReducer(state = initialState, action: AuthActions.AuthActions): State {
+export function authReducer(state = initialState, action: AuthActions.AuthActions): State {
   switch (action.type) {
     case AuthActions.AUTHENTICATE_SUCCESS: {
       const expirationDate = new Date(new Date().getTime() + +action.payload.expirationDate * 1000);

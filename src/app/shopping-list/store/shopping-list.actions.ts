@@ -1,6 +1,5 @@
-import { Action } from "@ngrx/store";
-
-import { IngredientModel } from "src/app/shared/models/ingredient.model";
+import type { Action } from "@ngrx/store";
+import type { IngredientModel } from "src/app/shared/models/ingredient.model";
 
 export const ADD_INGREDIENT = '[Shopping List] Add Ingredient';
 export const ADD_INGREDIENTS = '[Shopping List] Add Ingredients';
