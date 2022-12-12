@@ -12,7 +12,7 @@ export class DataStorageApiService {
   ) { }
 
   storeRecipes(recipes: Recipe[]): Observable<Recipe[]> {
-    return this.http.put<Recipe[]>(`${environment.api.fireBaseUrl} + recipes.json`, recipes);
+    return this.http.put<Recipe[]>(`${environment.api.fireBaseUrl}recipes.json`, recipes);
     // TODO: One possible way to add token to your requests
     // return this.authService.user$.pipe(
     //   take(1),
@@ -25,6 +25,6 @@ export class DataStorageApiService {
   }
 
   fetchRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${environment.api.fireBaseUrl} + recipes.json`);
+    return this.http.get<Recipe[]>(`${environment.api.fireBaseUrl}recipes.json`);
   }
 }

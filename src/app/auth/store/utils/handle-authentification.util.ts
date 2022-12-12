@@ -18,5 +18,6 @@ export const handleAuthentication = (expiresIn: string, email: string, userId: s
     userId,
     token,
     expirationDate,
+    redirect: true,
   });
 };

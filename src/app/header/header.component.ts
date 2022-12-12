@@ -4,6 +4,7 @@ import { map, pluck } from 'rxjs/operators';
 
 import * as AuthActions from '../auth/store/auth.actions';
 import { RecipeService } from '../recipes/recipe-list/services/recipe.service';
+import * as RecipeActions from '../recipes/store/recipe-actions';
 import { DataStorageApiService } from '../shared/services/data-storage-api.service';
 import { SubSink } from '../shared/utils/subsink.util';
 import type * as fromApp from '../store/app.reducer';
@@ -34,13 +35,15 @@ export class HeaderComponent implements OnDestroy {
   }
 
   onSaveData(): void {
-    const recipes = this.recipeService.getRecipes();
+    // const recipes = this.recipeService.getRecipes();
 
-    this.subSink.sink = this.dataStorageApiService.storeRecipes(recipes).subscribe();
+    // this.subSink.sink = this.dataStorageApiService.storeRecipes(recipes).subscribe();
+    this.store.dispatch(new RecipeActions.StoreRecipes());
   }
 
   onFetchData(): void {
-    this.subSink.sink = this.recipeService.fetchRecipes().subscribe();
+    // this.subSink.sink = this.recipeService.fetchRecipes().subscribe();
+    this.store.dispatch(new RecipeActions.FetchRecipes());
   }
 
   onLogout(): void {

@@ -6,6 +6,7 @@ import { map, tap } from "rxjs/operators";
 import * as ShoppingListActions from '../../../shopping-list/store/shopping-list.actions';
 import type * as fromApp from '../../../store/app.reducer';
 import type { Recipe } from "../../models/recipe.model";
+import * as RecipesActions from '../../store/recipe-actions';
 import { Store } from "@ngrx/store";
 import type { IngredientModel } from "src/app/shared/models/ingredient.model";
 import { DataStorageApiService } from "src/app/shared/services/data-storage-api.service";
@@ -62,7 +63,8 @@ export class RecipeService {
         ...recipe,
         ingredients: recipe?.ingredients ?? [],
       }))),
-      tap((recipes) => this.setRecipes(recipes)),
+      // tap((recipes) => this.setRecipes(recipes)),
+      tap((recipes) => this.store.dispatch(new RecipesActions.SetRecipes(recipes))),
     );
   }
 }

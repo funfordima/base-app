@@ -2,7 +2,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,11 +10,14 @@ import { AuthEffects } from './auth/store/auth.effects';
 import { ErrorInterceptorService } from './core/interceptors/error-interceptor.service';
 import { HeaderComponent } from './header/header.component';
 import { RecipeService } from './recipes/recipe-list/services/recipe.service';
+import { RecipeEffects } from './recipes/store/recipe-effects';
 import { NotificationModule } from './shared/notification-service';
 import { SharedModule } from './shared/shared.module';
 import * as fromApp from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -31,8 +33,9 @@ import { environment } from 'src/environments/environment';
     NotificationModule,
     SharedModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, RecipeEffects]),
     StoreDevtoolsModule.instrument({ logOnly: !environment.production }),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [
     RecipeService,
