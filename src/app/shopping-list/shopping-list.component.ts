@@ -1,12 +1,12 @@
 import type { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import type { Observable} from 'rxjs';
 import { of } from 'rxjs';
 
 import type { IngredientModel } from '../shared/models/ingredient.model';
 import * as ShoppingListActions from '../shopping-list/store/shopping-list.actions';
 import type * as fromApp from '../store/app.reducer';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-shopping-list',

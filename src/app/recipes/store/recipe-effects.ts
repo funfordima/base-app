@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
+import { ofType } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import type * as fromApp from '../../store/app.reducer';
 import * as RecipesActions from './recipe-actions';
-import { ofType } from '@ngrx/effects';
-import { Actions, Effect } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
 import { DataStorageApiService } from 'src/app/shared/services/data-storage-api.service';
 
 @Injectable()
@@ -27,7 +27,6 @@ export class RecipeEffects {
   storeRecipes = this.actions$.pipe(
     ofType(RecipesActions.STORE_RECIPES),
     withLatestFrom(this.store.select('recipes')),
-    // pluck('recipes'),
     switchMap(([_, { recipes }]) => this.dataStorageApiService.storeRecipes(recipes)),
   );
 

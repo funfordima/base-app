@@ -1,11 +1,11 @@
 import type { OnDestroy, OnInit} from '@angular/core';
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { tap } from 'rxjs/operators';
 
 import type * as fromApp from '../../store/app.reducer';
 import * as ShoppingListActions from '../store/shopping-list.actions';
-import { Store } from '@ngrx/store';
 import { IngredientModel } from 'src/app/shared/models/ingredient.model';
 import { SubSink } from 'src/app/shared/utils/subsink.util';
 

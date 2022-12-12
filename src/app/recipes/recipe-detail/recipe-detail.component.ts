@@ -1,13 +1,13 @@
 import type { OnDestroy, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { map, pluck, switchMap, tap } from 'rxjs/operators';
 
+import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
 import type * as fromApp from '../../store/app.reducer';
 import type { Recipe } from '../models/recipe.model';
-import { RecipeService } from '../recipe-list/services/recipe.service';
 import * as RecipeActions from '../store/recipe-actions';
-import { Store } from '@ngrx/store';
 import { SubSink } from 'src/app/shared/utils/subsink.util';
 
 @Component({
@@ -22,7 +22,6 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
 
   constructor(
-    private readonly recipeService: RecipeService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
     private readonly store: Store<fromApp.AppState>,
@@ -37,7 +36,6 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
       )),
     ).subscribe((recipe) => {
       this.recipe = recipe;
-      // this.recipe = this.recipeService.getRecipe(this.id!);
     });
   }
 
@@ -46,7 +44,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   }
 
   onAddToShoppingList(): void {
-    this.recipeService.addIngredientsToShoppingList(this.recipe!.ingredients);
+    this.store.dispatch(new ShoppingListActions.AddIngredients(this.recipe!.ingredients));
   }
 
   onEditRecipe(): void {
@@ -54,7 +52,6 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   }
 
   onDeleteRecipe(): void {
-    // this.recipeService.deleteRecipe(this.id!);
     this.store.dispatch(new RecipeActions.DeleteRecipe(this.id!));
     this.router.navigate(['/recipes']);
   }

@@ -1,6 +1,7 @@
 import type { OnDestroy, OnInit } from '@angular/core';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import type { NgForm } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { AlertComponent } from '../shared/notification-service/components/alert/alert.component';
@@ -8,7 +9,6 @@ import { PlaceholderDirective } from '../shared/utils/placeholder.directive';
 import { SubSink } from '../shared/utils/subsink.util';
 import type * as fromApp from '../store/app.reducer';
 import * as AuthActions from './store/auth.actions';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-auth',

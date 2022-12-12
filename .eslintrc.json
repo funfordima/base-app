@@ -151,7 +151,7 @@
           {
             "groups": [
               [
-                "^(@angular|@fontawesome|@ngx-translate|rxjs|ng-mocks|ngx-mask|@microsoft)(/.*|$)?"
+                "^(@angular|@fontawesome|@ngrx|@ngx-translate|rxjs|ng-mocks|ngx-mask|@microsoft)(/.*|$)?"
               ]
             ]
           }

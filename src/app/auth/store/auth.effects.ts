@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { Actions, Effect, ofType } from "@ngrx/effects";
 import { catchError } from "rxjs/internal/operators/catchError";
 import { map, switchMap, tap } from "rxjs/operators";
 
@@ -10,7 +11,6 @@ import { AuthApiService } from "../services/auth-api.service";
 import * as AuthActions from './auth.actions';
 import { handleAuthentication } from "./utils/handle-authentification.util";
 import { handleError } from "./utils/handle-error.util";
-import { Actions, Effect, ofType } from "@ngrx/effects";
 
 @Injectable()
 export class AuthEffects {

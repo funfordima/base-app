@@ -1,9 +1,9 @@
 import type { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import * as AuthActions from './auth/store/auth.actions';
 import type * as fromApp from './store/app.reducer';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',

@@ -1,5 +1,6 @@
-import type { Recipe } from "../models/recipe.model";
 import type { Action } from "@ngrx/store";
+
+import type { Recipe } from "../models/recipe.model";
 
 export const SET_RECIPES = '[Recipes] Set Recipes';
 export const FETCH_RECIPES = '[Recipes] Fetch Recipes';
