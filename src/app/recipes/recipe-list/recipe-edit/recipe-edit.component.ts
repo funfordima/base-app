@@ -10,7 +10,7 @@ import { RecipeService } from '../services/recipe.service';
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
-  styleUrls: ['./recipe-edit.component.css'],
+  styleUrls: ['./recipe-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RecipeEditComponent implements OnInit, OnDestroy {

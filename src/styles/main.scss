@@ -1,0 +1,95 @@
+@import 'common';
+@import 'palette';
+@import 'material-overrides/overrides';
+@import 'global-component-overrides';
+@import 'custom-properties-overrides';
+
+$shadowSize: rem(5);
+$shadowColor: rgba(0, 0, 0, 0.5);
+
+html {
+  font-size: $html-font-size;
+  font-family: $default-font-family;
+  // Hotfix before prod
+  //scroll-behavior: smooth;
+}
+
+body {
+  @include typography-level-props('body1');
+
+  min-height: 100vh;
+  font-style: normal;
+  background-color: app-color('M0');
+  color: app-color('M900');
+}
+
+.avoiding-scroll {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  outline: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplay';
+  src: url('/assets/fonts/NeueHaasDisplayRoman.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplayMedium';
+  src: url('/assets/fonts/NeueHaasDisplayMediu.ttf') format('truetype');
+}
+
+.main-layout {
+  height: 100vh; // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height/8468131
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  footer {
+    flex-shrink: 0;
+  }
+}
+
+.vc-tooltip {
+  @include typography-level-props('body1');
+  background-color: app-color('M0');
+  color: app-color('M900') !important;
+  padding: rem(8) !important;
+  box-shadow: 0 0 $shadowSize $shadowColor;
+  white-space: pre-line !important;
+
+  &--wide {
+    max-width: unset !important;
+  }
+}
+
+.vc-hide {
+  display: none;
+}
+
+.snackbar {
+  &__success {
+    background-color: app-color('P700');
+  }
+
+  &__error {
+    background-color: app-color('R500');
+  }
+}

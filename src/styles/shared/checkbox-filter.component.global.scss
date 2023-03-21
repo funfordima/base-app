@@ -1,0 +1,12 @@
+@import 'common';
+
+.filter-checkbox {
+  &__list .mat-checkbox-inner-container {
+    margin-right: rem(12);
+  }
+}
+.filter-fuel {
+  &__list .mat-checkbox-inner-container {
+    margin-right: rem(12);
+  }
+}

@@ -1,0 +1,110 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$primaryColor: (
+  50: app-color('P50'),
+  100: app-color('P100'),
+  200: app-color('P200'),
+  300: app-color('P300'),
+  400: app-color('P400'),
+  500: app-color('P500'),
+  600: app-color('P600'),
+  700: app-color('P700'),
+  800: app-color('P800'),
+  900: app-color('P900'),
+  A100: #adffc2,
+  A200: #7aff9c,
+  A400: #47ff76,
+  A700: #2eff63,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$accentColor: (
+  50: app-color('S50'),
+  100: app-color('S100'),
+  200: app-color('S200'),
+  300: app-color('S300'),
+  400: app-color('S400'),
+  500: app-color('S500'),
+  600: app-color('S600'),
+  700: app-color('S700'),
+  800: app-color('S800'),
+  900: app-color('S900'),
+  A100: #def0ff,
+  A200: #abdaff,
+  A400: #78c3ff,
+  A700: #5eb8ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$warnColor: (
+  50: #fee6e5,
+  100: app-color('R100'),
+  200: #fd9893,
+  300: #fc6f67,
+  400: #fb5047,
+  500: app-color('R500'),
+  600: #f92c22,
+  700: app-color('R700'),
+  800: #f81f17,
+  900: #f6130d,
+  A100: #ffffff,
+  A200: #ffeeee,
+  A400: #ffbcbb,
+  A700: #ffa3a1,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$vc-primary: mat.define-palette($primaryColor, 700);
+$vc-accent: mat.define-palette($accentColor);
+$vc-warn: mat.define-palette($warnColor);
+
+$vc-theme: mat.define-light-theme($vc-primary, $vc-accent, $vc-warn);
+
+@include mat.all-component-themes($vc-theme);

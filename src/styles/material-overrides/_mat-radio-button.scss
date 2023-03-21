@@ -1,0 +1,52 @@
+@import 'common';
+
+.mat-radio-button {
+  width: 100%;
+
+  .mat-radio-label {
+    height: 100%;
+    align-items: flex-start;
+  }
+
+  .mat-radio-container {
+    height: rem(24);
+    width: rem(24);
+  }
+
+  &.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-width: rem(8);
+    border-color: app-color('P700');
+  }
+
+  .mat-radio-outer-circle {
+    width: rem(24);
+    height: rem(24);
+    border-width: rem(1);
+  }
+
+  &.mat-accent .mat-radio-inner-circle {
+    background-color: app-color('M0');
+    box-shadow: 0 rem(1) rem(1) rgba(0, 78, 128, 0.1), 0 rem(2) rem(4) rgba(0, 0, 0, 0.13);
+  }
+
+  .mat-radio-inner-circle {
+    height: rem(16);
+    width: rem(16);
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  .mat-radio-ripple {
+    position: absolute;
+    left: calc(50% - #{rem(24)});
+    top: calc(50% - #{rem(24)});
+    height: rem(48);
+    width: rem(48);
+  }
+
+  .mat-radio-label-content {
+    padding-left: rem(10);
+    white-space: normal;
+  }
+}

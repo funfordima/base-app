@@ -1,0 +1,102 @@
+@import 'common';
+
+@mixin terms-and-clarification {
+  margin: rem(40) 0;
+
+  &__header {
+    max-width: rem(824);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 rem(16);
+  }
+
+  &__header-title {
+    @include typography-level-props('h2');
+    margin-bottom: rem(24);
+  }
+
+  &__block {
+    max-width: rem(824);
+    width: 100%;
+    margin: 0 auto rem(40) auto;
+    padding: 0 rem(16);
+  }
+
+  &__block-title {
+    @include typography-level-props('h3');
+    margin-bottom: rem(16);
+    color: app-color('M900');
+  }
+
+  &__block-content,
+  &__block-list {
+    margin-bottom: rem(16);
+  }
+
+  &__block-content,
+  &__block-item {
+    @include typography-level-props('body2');
+    color: app-color('M900');
+    &__bold {
+      @include typography-level-props('body1-bold');
+    }
+  }
+
+  &__block-list {
+    &.ol-list {
+      list-style: decimal;
+    }
+  }
+
+  @include not-mobile {
+    margin: rem(91) 0;
+
+    &__header-title {
+      font-size: rem(48);
+      line-height: rem(60);
+      margin-bottom: rem(40);
+    }
+
+    &__block-title {
+      font-size: rem(28);
+    }
+
+    &__block-content,
+    &__block-item {
+      font-size: rem(16);
+      line-height: rem(24);
+    }
+  }
+}
+
+.list {
+  margin-top: rem(10);
+
+  &__item-link {
+    position: relative;
+    @include typography-level-props('body2-bold');
+    color: app-color('P700');
+    text-decoration: none;
+    padding-left: rem(25);
+  }
+
+  @include not-mobile {
+    &__item-link {
+      font-weight: 600;
+      font-size: rem(16);
+      line-height: rem(24);
+    }
+  }
+}
+
+.disc {
+  list-style: disc;
+  padding-left: rem(25);
+}
+
+.left-padding {
+  padding-left: rem(34);
+}
+.double-left-padding {
+  padding-left: rem(68);
+}

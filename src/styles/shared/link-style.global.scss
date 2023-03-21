@@ -1,0 +1,28 @@
+@import 'common';
+
+.text-decoration-none {
+  a {
+    text-decoration: none;
+  }
+}
+
+.green-link {
+  a {
+    color: app-color('P700');
+  }
+}
+
+.white-link {
+  a {
+    color: app-color('M0');
+  }
+}
+
+.cookie-notification__container {
+  a {
+    @include typography-level-props('body1-bold');
+    color: app-color('P600');
+    text-decoration: none;
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,20 @@
+@import 'utils';
+
+@mixin not-mobile {
+  @media (min-width: 960px) {
+    @content;
+  }
+}
+
+@mixin tablet($resolution: 1100px) {
+  @media (min-width: 960px) and (max-width: $resolution) {
+    @content;
+  }
+}
+
+// Deprecated, because we use mobile first approach
+@mixin mobile {
+  @media (max-width: 960px) {
+    @content;
+  }
+}

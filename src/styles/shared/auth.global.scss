@@ -1,0 +1,191 @@
+@import 'common';
+
+.auth {
+  @include typography-level-props('body1');
+  color: app-color('M900');
+
+  &__container {
+    height: calc(100vh - #{rem(87)});
+
+    @include not-mobile {
+      height: auto;
+      overflow-y: unset;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__back-button {
+    width: rem(24);
+    height: rem(24);
+    margin-right: rem(8);
+    cursor: pointer;
+  }
+
+  &__close-button {
+    cursor: pointer;
+  }
+
+  &__additional-info {
+    @extend %t-body1;
+    margin-bottom: rem(16);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__remark {
+    @include typography-level-props('body1');
+  }
+
+  &__button {
+    @include typography-level-props('body1-bold');
+
+    color: app-color('P700');
+    margin-left: rem(8);
+    cursor: pointer;
+  }
+
+  &__call-us {
+    font-size: 12px;
+    line-height: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+  }
+
+  &--call-us-number {
+    font-size: 12px;
+    line-height: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+    text-decoration: none;
+    color: app-color('S300');
+  }
+
+  &__title {
+    @include typography-level-props('h4');
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 rem(-16) rem(16);
+    padding: 0 rem(16) rem(16);
+    border-bottom: rem(1) solid app-color('M300');
+    color: app-color('M900');
+
+    @include not-mobile {
+      margin: 0 rem(-24) rem(24);
+      padding: 0 rem(24) rem(24);
+    }
+
+    .icon {
+      color: app-color('M900');
+    }
+  }
+
+  &__divider {
+    border-top: rem(1) solid app-color('M300');
+    margin: rem(16) rem(-16);
+
+    @include not-mobile {
+      margin: rem(24) rem(-24);
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+
+    &__field {
+      .mat-form-field-flex {
+        align-items: center;
+      }
+    }
+
+    &__forgot-password {
+      @include typography-level-props('body1-bold');
+
+      color: app-color('P700');
+      margin-bottom: rem(24);
+      cursor: pointer;
+    }
+
+    &__label {
+      @include typography-level-props('caption');
+      color: app-color('M800');
+
+      &.vc-alert {
+        color: app-color('R700');
+      }
+    }
+
+    & .mat-input-element {
+      height: rem(44);
+      line-height: normal;
+    }
+
+    &__eye {
+      color: app-color('M900');
+    }
+
+    &__terms a {
+      @include typography-level-props('body1-bold');
+
+      text-decoration: none;
+      color: app-color('P700');
+    }
+
+    &__link {
+      @include typography-level-props('body2-bold');
+
+      color: app-color('P700');
+      cursor: pointer;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &--slim {
+        @extend %t-body1;
+      }
+    }
+
+    &__message-checkbox {
+      display: flex;
+
+      .mat-checkbox-inner-container {
+        margin: 0 rem(12) auto 0;
+      }
+
+      &-error {
+        .mat-checkbox-frame {
+          border-color: app-color('R500');
+        }
+      }
+    }
+  }
+
+  &__submit-button {
+    width: 100%;
+    margin-top: rem(24);
+  }
+}
+
+.alert {
+  & .auth-form__label {
+    color: app-color('R700');
+  }
+
+  & .mat-form-field-appearance-outline .mat-form-field-outline-start,
+  & .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-color: app-color('R700');
+  }
+}

@@ -3,7 +3,7 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.css'],
+  styleUrls: ['./alert.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlertComponent {

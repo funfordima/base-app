@@ -1,0 +1,227 @@
+@import 'utils';
+@import 'media-queries';
+
+@function typography-level(
+  $font-size-mobile,
+  $line-height-mobile: 1,
+  $font-weight-mobile: 500,
+  $font-family: null,
+  $letter-spacing-mobile: normal,
+  $font-size-desktop: 16,
+  $line-height-desktop: 1,
+  $font-weight-desktop: 500,
+  $letter-spacing-desktop: normal
+) {
+  @return (
+    font-size-mobile: $font-size-mobile,
+    line-height-mobile: $line-height-mobile,
+    font-weight-mobile: $font-weight-mobile,
+    font-family: $font-family,
+    letter-spacing-mobile: $letter-spacing-mobile,
+    font-size-desktop: $font-size-desktop,
+    line-height-desktop: $line-height-desktop,
+    font-weight-desktop: $font-weight-desktop,
+    letter-spacing-desktop: $letter-spacing-desktop
+  );
+}
+
+$typography-config: (
+  // https://www.figma.com/file/EAxp1sIGtGQVYJHYzVIrVU/Core-Styles?node-id=0%3A1
+  h1:
+    typography-level(
+      rem(32),
+      rem(40),
+      400,
+      // Note: if we use $default-medium-font-family then there are no needs to use font-weight 600
+      $default-medium-font-family,
+      normal,
+      rem(72),
+      rem(90),
+      400,
+      normal
+    ),
+  h1-mobile:
+    typography-level(
+      rem(32),
+      rem(48),
+      400,
+      $default-medium-font-family,
+      normal,
+      rem(32),
+      rem(48),
+      600,
+      normal
+    ),
+  h2:
+    typography-level(
+      rem(28),
+      rem(36),
+      400,
+      $default-medium-font-family,
+      normal,
+      rem(48),
+      rem(60),
+      400,
+      normal
+    ),
+  h3:
+    typography-level(
+      rem(24),
+      rem(32),
+      400,
+      $default-medium-font-family,
+      normal,
+      rem(28),
+      rem(36),
+      400,
+      normal
+    ),
+  h4:
+    typography-level(
+      rem(20),
+      rem(28),
+      400,
+      $default-medium-font-family,
+      normal,
+      rem(20),
+      rem(28),
+      400,
+      normal
+    ),
+  subtitle1:
+    typography-level(
+      rem(18),
+      rem(32),
+      400,
+      $default-font-family,
+      0.15px,
+      rem(18),
+      rem(32),
+      400,
+      0.15px
+    ),
+  subtitle-bold:
+    typography-level(
+      rem(18),
+      rem(32),
+      400,
+      $default-medium-font-family,
+      0.15px,
+      rem(18),
+      rem(32),
+      400,
+      0.15px
+    ),
+  body1:
+    typography-level(
+      rem(16),
+      rem(24),
+      400,
+      $default-font-family,
+      0.25px,
+      rem(16),
+      rem(24),
+      400,
+      0.25px
+    ),
+  body1-bold:
+    typography-level(
+      rem(16),
+      rem(24),
+      400,
+      $default-medium-font-family,
+      0.25px,
+      rem(16),
+      rem(24),
+      400,
+      0.25px
+    ),
+  body2:
+    typography-level(
+      rem(14),
+      rem(22),
+      400,
+      $default-font-family,
+      0.25px,
+      rem(14),
+      rem(22),
+      400,
+      0.25px
+    ),
+  body2-bold:
+    typography-level(
+      rem(14),
+      rem(22),
+      400,
+      $default-medium-font-family,
+      0.25px,
+      rem(14),
+      rem(22),
+      400,
+      0.25px
+    ),
+  button:
+    typography-level(
+      rem(16),
+      rem(24),
+      400,
+      $default-medium-font-family,
+      0.25px,
+      rem(16),
+      rem(24),
+      400,
+      0.25px
+    ),
+  caption:
+    typography-level(
+      rem(12),
+      rem(16),
+      400,
+      $default-font-family,
+      0.15px,
+      rem(12),
+      rem(16),
+      400,
+      0.15px
+    ),
+  caption-bold:
+    typography-level(
+      rem(12),
+      rem(16),
+      400,
+      $default-medium-font-family,
+      0.15px,
+      rem(12),
+      rem(16),
+      400,
+      0.15px
+    )
+);
+
+@mixin typography-props($level) {
+  font-size: map-get($level, 'font-size-mobile');
+  line-height: map-get($level, 'line-height-mobile');
+  font-weight: map-get($level, 'font-weight-mobile');
+  letter-spacing: map-get($level, 'letter-spacing-mobile');
+
+  @if map-get($level, 'font-family') != null {
+    font-family: map-get($level, 'font-family');
+  }
+
+  @include not-mobile {
+    font-size: map-get($level, 'font-size-desktop');
+    line-height: map-get($level, 'line-height-desktop');
+    font-weight: map-get($level, 'font-weight-desktop');
+    letter-spacing: map-get($level, 'letter-spacing-desktop');
+  }
+}
+
+@mixin typography-level-props($level-name) {
+  @include typography-props(map-get($typography-config, $level-name));
+}
+
+@each $key, $level in $typography-config {
+  %t-#{$key} {
+    @include typography-props($level);
+  }
+}

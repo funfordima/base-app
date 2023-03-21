@@ -1,0 +1,42 @@
+@import 'typography';
+@import 'colors';
+
+@mixin icon-button {
+  border: none;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+@mixin icon-button-primary {
+  @include icon-button();
+  color: app-color('P700');
+
+  &:hover {
+    background-color: app-color('P100');
+  }
+}
+
+@mixin text-button($typography: 't-button') {
+  @extend %#{$typography};
+  border: none;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+@mixin text-button-primary($typography: 't-button') {
+  @include text-button($typography);
+  color: app-color('P700');
+
+  &:disabled {
+    cursor: default;
+    color: app-color('M500');
+  }
+}

@@ -14,6 +14,7 @@ import { AuthInterceptorService } from './auth/interceptors/auth-interceptor.ser
 import { ErrorInterceptorService } from './core/interceptors/error-interceptor.service';
 import { PlaceholderDirective } from './shared/utils/placeholder.directive';
 import { AlertComponent } from './shared/notification-service/components/alert/alert.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AlertComponent } from './shared/notification-service/components/alert/a
     HttpClientModule,
     BrowserAnimationsModule,
     NotificationModule,
+    MatSlideToggleModule,
   ],
   providers: [
     ShoppingListService,
