@@ -1,0 +1,21 @@
+@import 'utils';
+
+$default-font-family: 'NeueHaasDisplay', sans-serif;
+$default-medium-font-family: 'NeueHaasDisplayMedium', sans-serif;
+
+$page-margin: rem(24);
+$main-layout-width: rem(1200);
+$main-layout-wide-width: rem(1920);
+
+$desktop-top-header-height: rem(40);
+$desktop-header-height: rem(80);
+$desktop-both-header-height: rem(120);
+$mobile-header-height: rem(56);
+
+$track-my-car-popup-width: rem(700);
+
+$search-page-filters-width: rem(382);
+$search-results-content-width: calc(100vw - #{$search-page-filters-width});
+$max-search-results-content-width: calc(#{rem(1920)} - #{$search-page-filters-width});
+
+$credinColor: #e60000;

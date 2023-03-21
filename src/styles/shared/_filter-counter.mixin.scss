@@ -1,0 +1,10 @@
+@use '../common' as *;
+
+@mixin filter-counter {
+  @extend %t-caption-bold;
+
+  padding: rem(2) rem(6);
+  border: rem(1) solid app-color('P700');
+  border-radius: rem(4);
+  color: app-color('P700');
+}

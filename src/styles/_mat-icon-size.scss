@@ -1,0 +1,15 @@
+@import './colors';
+@import './layout';
+
+@mixin mat-icon-size($size: 1.5rem) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+  line-height: $size;
+}
+
+@mixin icon-props($color: 'currentColor') {
+  @include center-flex();
+
+  color: $color;
+}

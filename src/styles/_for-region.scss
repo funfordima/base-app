@@ -1,0 +1,5 @@
+@mixin for-region($region) {
+  :host-context([region='#{$region}']) {
+    @content;
+  }
+}

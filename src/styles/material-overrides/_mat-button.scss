@@ -1,0 +1,364 @@
+@import 'common';
+
+.mat-button-base {
+  &.mat-button,
+  &.mat-raised-button,
+  &.mat-stroked-button,
+  &.mat-flat-button {
+    border-radius: rem(8);
+    padding: rem(12) rem(28);
+    line-height: 1;
+
+    .mat-button-wrapper {
+      @include typography-level-props('button');
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+      max-width: 100%;
+    }
+
+    &:not(.vc-button-small) {
+      .vc-button-icon {
+        @include mat-icon-size(rem(24));
+
+        &--prefix {
+          margin-right: rem(12);
+          margin-left: rem(-12);
+        }
+
+        &--suffix {
+          margin-left: rem(12);
+          margin-right: rem(-12);
+        }
+      }
+    }
+
+    &.vc-button-small {
+      padding: rem(8) rem(24);
+
+      .vc-button-icon {
+        @include mat-icon-size(rem(20));
+
+        &--prefix {
+          margin-right: rem(8);
+          margin-left: rem(-8);
+        }
+
+        &--suffix {
+          margin-left: rem(8);
+          margin-right: rem(-8);
+        }
+      }
+    }
+  }
+
+  &.mat-raised-button {
+    box-shadow: 0 rem(2) rem(4) rgba(0, 78, 128, 0.1), 0 rem(8) rem(16) rgba(0, 0, 0, 0.13);
+
+    .mat-button-focus-overlay {
+      background: transparent;
+    }
+
+    &:not(:disabled) {
+      &:hover,
+      &:focus-visible {
+        box-shadow: 0 rem(4) rem(8) rgba(0, 78, 128, 0.08), 0 rem(12) rem(24) rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    &.mat-primary {
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          color: app-color('M0');
+          background-color: app-color('P600');
+        }
+      }
+
+      &:disabled {
+        color: rgba(app-color('M0'), 0.76);
+        background-color: rgba(app-color('P700'), 0.38);
+      }
+
+      &.vc-button-contrast {
+        background-color: app-color('M0');
+        color: app-color('P700');
+
+        &:not(:disabled) {
+          &:hover,
+          &:focus-visible {
+            color: app-color('P800');
+            background-color: app-color('M0');
+          }
+        }
+
+        &:disabled {
+          color: app-color('P700');
+          background-color: rgba(app-color('M0'), 0.38);
+        }
+      }
+    }
+
+    &.mat-warn {
+      background-color: app-color('R700');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          color: app-color('M0');
+          background-color: app-color('R600');
+        }
+      }
+
+      &:disabled {
+        color: rgba(app-color('M0'), 0.76);
+        background-color: rgba(app-color('R600'), 0.38);
+      }
+    }
+
+    &:not(.mat-warn):not(.mat-primary):not(.mat-accent) {
+      color: app-color('M0');
+      background-color: app-color('M800');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          color: app-color('M0');
+          background-color: app-color('M700');
+        }
+      }
+
+      &:disabled {
+        color: rgba(app-color('M0'), 0.76);
+        background-color: rgba(app-color('M700'), 0.38);
+      }
+    }
+  }
+
+  &.mat-stroked-button {
+    border-width: rem(2);
+    padding: rem(10) rem(26);
+
+    &.vc-button-small {
+      padding: rem(6) rem(22);
+    }
+
+    .mat-button-focus-overlay {
+      background: transparent;
+    }
+
+    &.mat-primary {
+      border-color: app-color('P700');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          background-color: app-color('P50');
+        }
+      }
+
+      &:disabled {
+        color: rgba(app-color('P700'), 0.38);
+        border-color: rgba(app-color('P700'), 0.38);
+      }
+
+      &.vc-button-contrast {
+        border-color: app-color('M0');
+        color: app-color('M0');
+
+        &:not(:disabled) {
+          &:hover,
+          &:focus-visible {
+            border-color: app-color('M0');
+            color: app-color('M0');
+            background-color: rgba(app-color('M0'), 0.2);
+          }
+        }
+
+        &:disabled {
+          border-color: rgba(app-color('M0'), 0.38);
+          color: rgba(app-color('M0'), 0.38);
+          background-color: transparent;
+        }
+      }
+    }
+
+    &.mat-warn {
+      color: app-color('R700');
+      border-color: app-color('R700');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          background-color: app-color('R50');
+        }
+      }
+
+      &:disabled {
+        color: rgba(app-color('R700'), 0.38);
+        border-color: rgba(app-color('R700'), 0.38);
+      }
+    }
+
+    &:not(.mat-warn):not(.mat-primary):not(.mat-accent) {
+      color: app-color('M800');
+      border-color: app-color('M800');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          background-color: app-color('M100');
+        }
+      }
+
+      &:disabled {
+        color: rgba(app-color('M800'), 0.38);
+        border-color: rgba(app-color('M800'), 0.38);
+      }
+    }
+  }
+
+  &.mat-flat-button {
+    .mat-button-focus-overlay {
+      background: transparent;
+    }
+
+    &.mat-primary {
+      background-color: app-color('P50');
+      color: app-color('P800');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          background-color: app-color('P100');
+        }
+      }
+
+      &:disabled {
+        background-color: rgba(app-color('P700'), 0.06);
+        color: rgba(app-color('P700'), 0.38);
+      }
+
+      &.vc-button-contrast {
+        background-color: rgba(app-color('M0'), 0.2);
+        color: app-color('M0');
+
+        &:not(:disabled) {
+          &:hover,
+          &:focus-visible {
+            background-color: rgba(app-color('M0'), 0.38);
+            color: app-color('M0');
+          }
+        }
+
+        &:disabled {
+          background-color: rgba(app-color('M0'), 0.2);
+          color: rgba(app-color('M0'), 0.38);
+        }
+      }
+    }
+
+    &.mat-warn {
+      background-color: app-color('R50');
+      color: app-color('R700');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          background-color: app-color('R100');
+        }
+      }
+
+      &:disabled {
+        background-color: app-color('R50');
+        color: rgba(app-color('R700'), 0.38);
+      }
+    }
+
+    &:not(.mat-warn):not(.mat-primary):not(.mat-accent) {
+      background-color: app-color('M100');
+      color: app-color('M800');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          background-color: app-color('M300');
+        }
+      }
+
+      &:disabled {
+        background-color: rgba(app-color('M100'), 0.38);
+        color: rgba(app-color('M800'), 0.38);
+      }
+    }
+  }
+
+  &.mat-button {
+    .mat-button-focus-overlay {
+      background: transparent;
+    }
+
+    &.mat-primary {
+      color: app-color('P700');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          background-color: app-color('P50');
+        }
+      }
+
+      &:disabled {
+        color: rgba(app-color('P700'), 0.38);
+      }
+
+      &.vc-button-contrast {
+        color: app-color('M0');
+
+        &:not(:disabled) {
+          &:hover,
+          &:focus-visible {
+            background-color: rgba(app-color('M0'), 0.2);
+            color: app-color('M0');
+          }
+        }
+
+        &:disabled {
+          color: rgba(app-color('M0'), 0.38);
+          background-color: transparent;
+        }
+      }
+    }
+
+    &.mat-warn {
+      color: app-color('R700');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          background-color: app-color('R50');
+        }
+      }
+
+      &:disabled {
+        color: rgba(app-color('R700'), 0.38);
+      }
+    }
+
+    &:not(.mat-warn):not(.mat-primary):not(.mat-accent) {
+      color: app-color('M800');
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          background-color: app-color('M100');
+        }
+      }
+
+      &:disabled {
+        color: rgba(app-color('M800'), 0.38);
+      }
+    }
+  }
+}

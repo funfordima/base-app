@@ -1,0 +1,17 @@
+@import 'common';
+
+.mat-checkbox {
+  .mat-checkbox-layout {
+    white-space: normal;
+
+    .mat-checkbox-inner-container {
+      height: rem(24);
+      width: rem(24);
+
+      .mat-checkbox-background,
+      .mat-checkbox-frame {
+        border-radius: rem(6);
+      }
+    }
+  }
+}

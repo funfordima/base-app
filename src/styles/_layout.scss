@@ -1,0 +1,49 @@
+@import 'utils';
+@import 'media-queries';
+
+$mobile-page-spacing: rem(16);
+$desktop-page-spacing: rem(32);
+
+@mixin page-margin() {
+  margin-left: $mobile-page-spacing;
+  margin-right: $mobile-page-spacing;
+
+  @include not-mobile {
+    margin-left: $desktop-page-spacing;
+    margin-right: $desktop-page-spacing;
+  }
+}
+
+@mixin page-padding() {
+  padding-left: $mobile-page-spacing;
+  padding-right: $mobile-page-spacing;
+
+  @include not-mobile {
+    padding-left: $desktop-page-spacing;
+    padding-right: $desktop-page-spacing;
+  }
+}
+
+@mixin full-page-padding() {
+  padding: $mobile-page-spacing;
+
+  @include not-mobile {
+    padding: $desktop-page-spacing;
+  }
+}
+
+@mixin main-layout() {
+  @include not-mobile {
+    max-width: $main-layout-width;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  @content;
+}
+
+@mixin center-flex() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

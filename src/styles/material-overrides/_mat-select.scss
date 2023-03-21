@@ -1,0 +1,15 @@
+@import 'common';
+
+.mat-form-field.mat-form-field-appearance-outline .mat-form-field-infix select.mat-input-element {
+  line-height: 1;
+  padding-top: 1px;
+}
+
+.mat-form-field-appearance-outline .mat-select-trigger {
+  top: 1px;
+  height: rem(48);
+
+  .mat-select-arrow-wrapper {
+    transform: translateY(0);
+  }
+}

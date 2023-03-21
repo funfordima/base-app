@@ -1,0 +1,44 @@
+$colors: (
+  // https://www.figma.com/file/EAxp1sIGtGQVYJHYzVIrVU/Core-Styles?node-id=185%3A0
+  'M900': #1b1c1d,
+  'M800': #4e5052,
+  'M700': #969798,
+  'M600': #f1f3f4,
+  'M500': #727779,
+  'M300': #d9dadc,
+  'M100': #f1f3f4,
+  'M0': #ffffff,
+  'P50': #e5f4ea,
+  'P100': #c1e3cc,
+  'P200': #99d1ab,
+  'P300': #6fc08b,
+  'P400': #4eb373,
+  'P500': #29a65b,
+  'P600': #219752,
+  'P700': #178546,
+  'P800': #0f743b,
+  'P900': #005628,
+  'S50': #dff3f8,
+  'S100': #ade1ee,
+  'S200': #78cce3,
+  'S300': #43b9d9,
+  'S400': #00aad5,
+  'S500': #009cd1,
+  'S600': #008fc3,
+  'S700': #007db2,
+  'S800': #006c9f,
+  'S900': #004e80,
+  'R50': #ffebee,
+  'R100': #ffcacf,
+  'R500': #fa3126,
+  'R600': #eb2327,
+  'R700': #d91421,
+  'O50': #fff4df,
+  'O100': #fee6c3,
+  'O500': #fba939,
+  'O700': #ef8020
+);
+
+@function app-color($color) {
+  @return map-get($colors, $color);
+}
