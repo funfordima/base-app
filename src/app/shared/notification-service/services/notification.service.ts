@@ -2,8 +2,8 @@ import type { OnDestroy } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { SubSink } from '../../utils/subsink.util';
 
+import { SubSink } from '../../utils/subsink.util';
 import { MessageComponent } from '../components/message/message.component';
 import type { ErrorConfig } from '../models/error-config.model';
 

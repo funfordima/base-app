@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import type { OnDestroy, OnInit} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 
+import { ShoppingListService } from '../services/shopping-list.service';
 import { IngredientModel } from 'src/app/shared/models/ingredient.model';
 import { SubSink } from 'src/app/shared/utils/subsink.util';
-import { ShoppingListService } from '../services/shopping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',

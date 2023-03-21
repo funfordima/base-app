@@ -1,14 +1,16 @@
+import type { HttpErrorResponse } from '@angular/common/http';
+import type { OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
+import type { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import type { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
-import { SubSink } from '../shared/utils/subsink.util';
-import { AuthResponse } from './models/auth-response.interface';
-import { AuthService } from './services/auth.service';
 import { AlertComponent } from '../shared/notification-service/components/alert/alert.component';
 import { PlaceholderDirective } from '../shared/utils/placeholder.directive';
+import { SubSink } from '../shared/utils/subsink.util';
+import type { AuthResponse } from './models/auth-response.interface';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -62,14 +64,14 @@ export class AuthComponent implements OnDestroy {
 
     this.subs.sink = authObs$.subscribe(
       (res) => {
-        console.log(res);
+        console.error(res);
         this.isLoading = false;
         this.error = null;
         this.router.navigate(['/recipes']);
         this.cdr.markForCheck();
       },
       (err) => {
-        console.log(err);
+        console.error(err);
         this.error = err?.error?.error ? err.error.error : 'An error occurred';
         this.isLoading = false;
         this.showErrorAlert(this.error);

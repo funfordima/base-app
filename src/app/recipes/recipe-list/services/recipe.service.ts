@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { Observable, Subject } from "rxjs";
+import type { Observable} from "rxjs";
+import { Subject } from "rxjs";
 import { map, tap } from "rxjs/operators";
 
-import { IngredientModel } from "src/app/shared/models/ingredient.model";
+import type { Recipe } from "../../models/recipe.model";
+import type { IngredientModel } from "src/app/shared/models/ingredient.model";
 import { DataStorageApiService } from "src/app/shared/services/data-storage-api.service";
 import { ShoppingListService } from "src/app/shopping-list/services/shopping-list.service";
-
-import { Recipe } from "../../models/recipe.model";
 
 @Injectable()
 export class RecipeService {

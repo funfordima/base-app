@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import type { OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { IngredientModel } from '../shared/models/ingredient.model';
+import type { IngredientModel } from '../shared/models/ingredient.model';
 import { SubSink } from '../shared/utils/subsink.util';
 import { ShoppingListService } from './services/shopping-list.service';
 

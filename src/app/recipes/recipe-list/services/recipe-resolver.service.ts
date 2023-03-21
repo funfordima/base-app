@@ -1,8 +1,9 @@
-import { Resolve } from '@angular/router';
 import { Injectable } from "@angular/core";
-import { Observable, of } from 'rxjs';
+import type { Resolve } from '@angular/router';
+import type { Observable} from 'rxjs';
+import { of } from 'rxjs';
 
-import { Recipe } from '../../models/recipe.model';
+import type { Recipe } from '../../models/recipe.model';
 import { RecipeService } from './recipe.service';
 
 @Injectable({

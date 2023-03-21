@@ -15,7 +15,7 @@ export class MessageComponent {
     @Inject(MAT_DIALOG_DATA) public data: ErrorDialogData,
   ) { }
 
-  public onClick(): void {
+  onClick(): void {
     this.dialogRef.close();
   }
 }

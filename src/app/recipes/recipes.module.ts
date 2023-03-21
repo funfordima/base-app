@@ -8,8 +8,8 @@ import { RecipeEditComponent } from "./recipe-list/recipe-edit/recipe-edit.compo
 import { RecipeEmptyComponent } from "./recipe-list/recipe-empty/recipe-empty.component";
 import { RecipeItemComponent } from "./recipe-list/recipe-item/recipe-item.component";
 import { RecipeListComponent } from "./recipe-list/recipe-list.component";
-import { RecipesRoutingModule } from "./recipes-routing.module";
 import { RecipesComponent } from "./recipes.component";
+import { RecipesRoutingModule } from "./recipes-routing.module";
 
 
 @NgModule({

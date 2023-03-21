@@ -1,8 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
+import type { OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
+
 import { AuthService } from '../auth/services/auth.service';
 import { RecipeService } from '../recipes/recipe-list/services/recipe.service';
-
 import { DataStorageApiService } from '../shared/services/data-storage-api.service';
 import { SubSink } from '../shared/utils/subsink.util';
 

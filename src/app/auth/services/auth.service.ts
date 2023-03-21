@@ -1,15 +1,16 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import type { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import type { Observable } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { NotificationService } from 'src/app/shared/notification-service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
-import { AuthResponse } from '../models/auth-response.interface';
+import type { AuthResponse } from '../models/auth-response.interface';
 import { UserModel } from '../models/user.model';
 import { getCustomServerErrorText } from '../utils/server-error.utils';
 import { AuthApiService } from './auth-api.service';
+import { NotificationService } from 'src/app/shared/notification-service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -109,7 +110,7 @@ export class AuthService {
   }
 
   private handleError(err: HttpErrorResponse): Observable<HttpErrorResponse> {
-    console.log(err);
+    console.error(err);
 
     const error = getCustomServerErrorText(err);
     if (error) {
