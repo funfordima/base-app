@@ -15,6 +15,8 @@ import { NotificationModule } from './shared/notification-service';
 import { DropDownDirective } from './shared/utils/drop-down.directive';
 import { PlaceholderDirective } from './shared/utils/placeholder.directive';
 import { ShoppingListService } from './shopping-list/services/shopping-list.service';
+import { AlphabeticalListModule } from './shared/alphabetical-list/alphabetical-list.module';
+import { TemplateTypeSafeModule } from './shared/utils/template-type-safe/template-type-safe.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ShoppingListService } from './shopping-list/services/shopping-list.serv
     BrowserAnimationsModule,
     NotificationModule,
     MatSlideToggleModule,
+    AlphabeticalListModule,
+    TemplateTypeSafeModule,
   ],
   providers: [
     ShoppingListService,
